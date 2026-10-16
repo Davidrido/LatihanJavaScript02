@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+
+<h2>To-Do List</h2>
+
+<input id="task" placeholder="New task">
+
+<button onclick="addTask()">Tambahkan</button>
+
+<ul id="list"></ul>
+
+<script>
+
+let tasks = [];
+
+function addTask() {
+    let input = document.getElementById("task");
+    let taskName = input.value.trim();
+
+    if (taskName === "") {
+        return;
+    }
+    tasks.push(taskName);
+    displayTasks();
+    input.value = "";
+}
+
+function displayTasks() {
+    let list = document.getElementById("list");
+    list.innerHTML = "";
+    tasks.forEach(function(task) {
+        let item = document.createElement("li");
+        item.textContent = task;
+        list.appendChild(item);
+    });
+}
+</script>
+</body>
+</html>
